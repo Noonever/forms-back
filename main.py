@@ -1,16 +1,18 @@
-from typing import Literal, Optional
-
-from pydantic import BaseModel
-
 from fastapi import FastAPI
+from schemas import FormData
 
 app = FastAPI()
 
-class PostBody(BaseModel):
-    lol: str
-    booleanString: Literal["True", "False"]
-    something: Optional[str]
 
-app.post("/form")
-async def handle_form(body: PostBody):
-    print(body.json())
+@app.get("/create-form/{form_type}")
+async def create_form(form_type: str, uid: str):
+        
+
+
+@app.post("/forms")
+async def handle_form(form_data: FormData):
+    print(f"\033[93mKey: {form_data}\033[0m")
+
+    
+
+
